@@ -57,7 +57,7 @@ class TitleState extends MusicBeatState
 
 		super.create();
 
-		FlxG.save.bind('funkin', 'ninjamuffin99');
+		FlxG.save.bind('r4funkin', 'blitzdotcs');
 
 		Highscore.load();
 
