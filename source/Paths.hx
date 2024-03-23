@@ -49,4 +49,10 @@ class Paths
 	{
 		return FlxAtlasFrames.fromSpriteSheetPacker(image(key), file('images/$key.txt'));
 	}
+
+    // Modding stuff
+    inline static public function getHaxeScript(string:String)
+	{
+		return file('data/$string/haxeModchart.hx');
+	}
 }

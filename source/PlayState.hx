@@ -38,6 +38,10 @@ import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
+import hscript.Expr;
+import hscript.Parser;
+import hscript.Interp;
+import sys.FileSystem;
 
 using StringTools;
 
@@ -144,6 +148,16 @@ class PlayState extends MusicBeatState
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
+
+		// HSCRIPT!!!!
+		if (FileSystem.exists(Sys.getCwd() + 'assets/data/${SONG.song.toLowerCase()}/haxeModchart.hx'))
+		{
+			var expr = Paths.getHaxeScript(SONG.song.toLowerCase());
+			var parser = new hscript.Parser();
+			var ast = parser.parseString(expr);
+			var interp = new hscript.Interp();
+			trace(interp.execute(ast));
+		}
 
 		switch (SONG.song.toLowerCase())
 		{
